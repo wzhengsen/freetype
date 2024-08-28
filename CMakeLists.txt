@@ -110,7 +110,12 @@
 
 # To minimize the number of cmake_policy() workarounds,
 # CMake >= 3 is requested.
-cmake_minimum_required(VERSION 3.0...3.5)
+cmake_minimum_required(VERSION 3.12)
+
+if(POLICY CMP0074)
+  # Allow find_package() to use the XXX_ROOT variable, if available.
+  cmake_policy(SET CMP0074 NEW)
+endif()
 
 if (NOT CMAKE_VERSION VERSION_LESS 3.3)
   # Allow symbol visibility settings also on static libraries. CMake < 3.3
